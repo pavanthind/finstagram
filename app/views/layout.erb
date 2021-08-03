@@ -9,20 +9,19 @@
     </head>
     <body>
         <header>
-            <h1>
-                <a href="/">Finstagram</a>
-            </h1>
+            <h1>Finstagram</h1>
             <div class="login-info">
                 <% if current_user %>
+                <%= current_user.username %>
                 <a href="/logout">Logout</a>
-            <% else %>
+                <% else %>
                 <a href="/login">Login</a>
                 <a href="/signup">Signup</a>
-            <% end %>
+                <% end %>
             </div>
         </header>
-        <main role="main">
-            <%= yield %>
-        </main>
-    </body>
+    <main role="main">
+      <%= yield %>
+    </main>
+  </body>
 </html>

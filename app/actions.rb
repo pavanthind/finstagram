@@ -50,12 +50,13 @@ get '/logout'do
     redirect to('/')
 end
 
-get '/' do
-    @finstagram_posts = FinstagramPost.order(created_at: :desc)
-    @current_user = User.find_by(id: session[:user_id])
-    erb(:index)
-end
-
+post '/comments' do
+    text = params[:text]
+    finstagram_post_id = params[:finstagram_post_id]
+    comment = Comment.new({ text: text, finstagram_post_id: finstagram_post_id, user_id: current_user.id })
+    comment.save
+    redirect(back)
+  end
 
 get '/' do
     @finstagram_posts = FinstagramPost.order(created_at: :desc)
